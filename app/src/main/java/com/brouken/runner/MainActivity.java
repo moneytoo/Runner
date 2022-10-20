@@ -24,6 +24,12 @@ public class MainActivity extends Activity {
             }
         }
 
+        Intent intent = new Intent("com.google.android.finsky.VIEW_MY_DOWNLOADS");
+        intent.setClassName("com.android.vending", "com.google.android.finsky.activities.MainActivity");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
         finish();
     }
 }

@@ -10,7 +10,7 @@ android {
         applicationId "com.brouken.runner"
         minSdk 26
         targetSdk 33
-        versionCode 2
+        versionCode 3
         versionName "0.2"
     }
 

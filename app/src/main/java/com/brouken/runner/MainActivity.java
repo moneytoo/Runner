@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
                 continue;
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-                    && packageManager.isPackageSuspended(applicationInfo.packageName)) {
+                    && isPackageSuspended(packageManager, applicationInfo.packageName)) {
                 continue;
             }
             Intent launchIntent = packageManager.getLaunchIntentForPackage(applicationInfo.packageName);
@@ -41,5 +41,13 @@ public class MainActivity extends Activity {
         }
 
         finish();
+    }
+
+    private boolean isPackageSuspended(PackageManager packageManager, String packageName) {
+        try {
+            return packageManager.isPackageSuspended(packageName);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
 }

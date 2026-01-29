@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -13,14 +14,24 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         PackageManager packageManager = getPackageManager();
+        String ownPackageName = getPackageName();
         for (ApplicationInfo applicationInfo : packageManager.getInstalledApplications(0)) {
-            if((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
-                if (!applicationInfo.enabled) {
-                    Intent launchIntent = packageManager.getLaunchIntentForPackage(applicationInfo.packageName);
-                    if (launchIntent != null) {
-                        startActivity(launchIntent);
-                    }
-                }
+            if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                continue;
+            }
+            if (!applicationInfo.enabled) {
+                continue;
+            }
+            if (ownPackageName.equals(applicationInfo.packageName)) {
+                continue;
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+                    && packageManager.isPackageSuspended(applicationInfo.packageName)) {
+                continue;
+            }
+            Intent launchIntent = packageManager.getLaunchIntentForPackage(applicationInfo.packageName);
+            if (launchIntent != null) {
+                startActivity(launchIntent);
             }
         }
 

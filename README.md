@@ -10,9 +10,7 @@ This is pretty much how _Runner_ works - it just launches all user installed (no
 
 ## How to update deep sleeping apps
 
-1. Install the latest [apk release](https://github.com/moneytoo/Runner/releases/latest) of _Runner_
+1. Install the latest [apk release](https://github.com/JacktheRanger/Samsung-App-Runner/releases)
 2. Start _Runner_ and wait for _Play Store_ to open
 3. Select _Check for updates_ and/or wait a few seconds for _Play Store_ to detect app updates
 4. Once updated, turn off the display and all these apps will be put to sleep again
-
-\* I have almost 60 deep sleeping apps on my _Galaxy S21 FE_ and all these apps launch in 2 or 3 seconds. 

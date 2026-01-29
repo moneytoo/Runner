@@ -1,4 +1,4 @@
-# Runner
+# Samsung App Runner
 
 _Runner_ is a simple app allowing you to update [**Deep sleeping apps**](https://www.samsung.com/us/support/answer/ANS00088422/) on **Samsung** devices running Android (One UI).
 

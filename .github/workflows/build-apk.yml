@@ -3,6 +3,13 @@ name: Build APK
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: build-apk-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-apk:
     runs-on: ubuntu-latest
@@ -16,6 +23,14 @@ jobs:
           distribution: temurin
           java-version: '11'
           cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager --install "platforms;android-33" "build-tools;33.0.2" "platform-tools"
+          yes | sdkmanager --licenses
 
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x ./gradlew

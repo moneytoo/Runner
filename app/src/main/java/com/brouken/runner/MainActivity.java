@@ -16,9 +16,6 @@ public class MainActivity extends Activity {
         PackageManager packageManager = getPackageManager();
         String ownPackageName = getPackageName();
         for (ApplicationInfo applicationInfo : packageManager.getInstalledApplications(0)) {
-            if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                continue;
-            }
             if (!applicationInfo.enabled) {
                 continue;
             }
@@ -27,6 +24,9 @@ public class MainActivity extends Activity {
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
                     && isPackageSuspended(packageManager, applicationInfo.packageName)) {
+                continue;
+            }
+            if (!isTargetSleepApp(packageManager, applicationInfo)) {
                 continue;
             }
             Intent launchIntent = packageManager.getLaunchIntentForPackage(applicationInfo.packageName);
@@ -49,5 +49,15 @@ public class MainActivity extends Activity {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+
+    private boolean isTargetSleepApp(PackageManager packageManager, ApplicationInfo applicationInfo) {
+        CharSequence label = applicationInfo.loadLabel(packageManager);
+        if (label == null) {
+            return false;
+        }
+        String appName = label.toString();
+        return "Sleeping".equalsIgnoreCase(appName)
+                || "Deep sleeping".equalsIgnoreCase(appName);
     }
 }

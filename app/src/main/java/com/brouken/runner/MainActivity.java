@@ -25,6 +25,9 @@ public class MainActivity extends Activity {
             if (ownPackageName.equals(applicationInfo.packageName)) {
                 continue;
             }
+            if (!isTargetSleepApp(packageManager, applicationInfo)) {
+                continue;
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
                     && isPackageSuspended(packageManager, applicationInfo.packageName)) {
                 continue;
@@ -49,5 +52,15 @@ public class MainActivity extends Activity {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+
+    private boolean isTargetSleepApp(PackageManager packageManager, ApplicationInfo applicationInfo) {
+        CharSequence label = applicationInfo.loadLabel(packageManager);
+        if (label == null) {
+            return false;
+        }
+        String appName = label.toString();
+        return "Sleeping".equalsIgnoreCase(appName)
+                || "Deep sleeping".equalsIgnoreCase(appName);
     }
 }

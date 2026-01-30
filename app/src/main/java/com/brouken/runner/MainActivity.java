@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -22,11 +21,7 @@ public class MainActivity extends Activity {
             if (ownPackageName.equals(applicationInfo.packageName)) {
                 continue;
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-                    && isPackageSuspended(packageManager, applicationInfo.packageName)) {
-                continue;
-            }
-            if (!isTargetSleepApp(packageManager, applicationInfo)) {
+            if (!isTargetSleepApp(applicationInfo)) {
                 continue;
             }
             Intent launchIntent = packageManager.getLaunchIntentForPackage(applicationInfo.packageName);
@@ -43,11 +38,11 @@ public class MainActivity extends Activity {
         finish();
     }
 
-    private boolean isPackageSuspended(PackageManager packageManager, String packageName) {
-        try {
-            return packageManager.isPackageSuspended(packageName);
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
+    private boolean isTargetSleepApp(ApplicationInfo applicationInfo) {
+        // Check if app is in sleeping or deep sleeping state
+        // Sleeping apps are typically marked as suspended or stopped by Samsung
+        boolean isSuspended = (applicationInfo.flags & ApplicationInfo.FLAG_SUSPENDED) != 0;
+        boolean isStopped = (applicationInfo.flags & ApplicationInfo.FLAG_STOPPED) != 0;
+        return isSuspended || isStopped;
     }
 }

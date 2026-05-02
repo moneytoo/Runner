@@ -16,15 +16,18 @@ public class MainActivity extends Activity {
         for (ApplicationInfo applicationInfo : packageManager.getInstalledApplications(0)) {
             if((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
                 if (!applicationInfo.enabled) {
-                    Intent launchIntent = packageManager.getLaunchIntentForPackage(applicationInfo.packageName);
-                    if (launchIntent != null) {
-                        startActivity(launchIntent);
+                    final String installer = packageManager.getInstallerPackageName(applicationInfo.packageName);
+                    if ("com.android.vending".equals(installer)) {
+                        final Intent launchIntent = packageManager.getLaunchIntentForPackage(applicationInfo.packageName);
+                        if (launchIntent != null) {
+                            startActivity(launchIntent);
+                        }
                     }
                 }
             }
         }
 
-        Intent intent = new Intent("com.google.android.finsky.VIEW_MY_DOWNLOADS");
+        final Intent intent = new Intent("com.google.android.finsky.VIEW_MY_DOWNLOADS");
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }

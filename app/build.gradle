@@ -4,13 +4,13 @@ plugins {
 
 android {
     namespace 'com.brouken.runner'
-    compileSdk 37
+    compileSdk = 37
 
     defaultConfig {
         applicationId "com.brouken.runner"
         minSdk 26
-        targetSdk 33
-        versionCode 4
+        targetSdk 36
+        versionCode 5
         versionName "0.${versionCode}"
     }
 

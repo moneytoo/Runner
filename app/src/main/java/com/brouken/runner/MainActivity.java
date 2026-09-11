@@ -6,6 +6,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import java.util.Collections;
+import java.util.List;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -13,7 +16,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         PackageManager packageManager = getPackageManager();
-        for (ApplicationInfo applicationInfo : packageManager.getInstalledApplications(0)) {
+        List<ApplicationInfo> applicationInfos = packageManager.getInstalledApplications(0);
+        Collections.shuffle(applicationInfos);
+        for (ApplicationInfo applicationInfo : applicationInfos) {
             if((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
                 if (!applicationInfo.enabled) {
                     final String installer = packageManager.getInstallerPackageName(applicationInfo.packageName);

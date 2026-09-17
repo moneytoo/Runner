@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.brouken.runner'
+    namespace 'app.dopita.smsn.updater'
     compileSdk = 37
 
     defaultConfig {
-        applicationId "com.brouken.runner"
+        applicationId "app.dopita.smsn.updater"
         minSdk 26
         targetSdk 36
         versionCode 5

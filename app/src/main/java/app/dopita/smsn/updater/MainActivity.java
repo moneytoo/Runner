@@ -1,10 +1,11 @@
-package com.brouken.runner;
+package app.dopita.smsn.updater;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,6 +37,8 @@ public class MainActivity extends Activity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+
+        Toast.makeText(this, "Waking up sleeping apps...", Toast.LENGTH_LONG).show();
 
         finish();
     }

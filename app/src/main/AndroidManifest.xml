@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="com.samsung.feature.SAMSUNG_EXPERIENCE"
+        android:required="true" />
+
     <queries>
         <intent>
             <action android:name="android.intent.action.MAIN" />

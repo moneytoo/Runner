@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
             startActivity(intent);
         }
 
-        Toast.makeText(this, "Waking up sleeping apps...", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Waking up sleeping apps…", Toast.LENGTH_LONG).show();
 
         finish();
     }

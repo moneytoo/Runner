@@ -6,9 +6,12 @@ If you have this feature enabled, unused (as well as manually added) apps will b
 
 This is pretty much how it works - it just launches all user installed (non-system) deep sleeping apps, alowing you to check for app updates in the _Play Store_. Once you turn off the screen, all these apps will put to sleep.
 
+## Download
+
+Get latest apk from [releases](../../releases/latest) or Google Play Store (coming soon).
+
 ## How to update deep sleeping apps
 
-1. Install the latest [apk release](/releases/latest)
-2. Start the app and wait for _Play Store_ to open
-3. Select _Check for updates_ and/or wait a few seconds for _Play Store_ to detect app updates
-4. Once updated, turn off the display and all these apps will be put to sleep again
+1. Start the app and wait for _Play Store_ to open
+2. Select _Check for updates_ and/or wait a few seconds for _Play Store_ to detect app updates
+3. Once updated, turn off the display and all these apps will be put to sleep again

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="108" height="108" viewBox="0 0 108 108">
+  <defs>
+    <linearGradient id="settingsBg"
+                    gradientUnits="userSpaceOnUse"
+                    x1="54" y1="18" x2="54" y2="90"
+                    spreadMethod="pad"
+                    color-interpolation="sRGB">
+      <stop offset="0" stop-color="#353747"/>
+      <stop offset="1" stop-color="#14151A"/>
+    </linearGradient>
+  </defs>
+  <rect width="108" height="108" fill="url(#settingsBg)"/>
+</svg>

@@ -8,7 +8,9 @@ This is pretty much how it works - it just launches all user installed (non-syst
 
 ## Download
 
-Get latest apk from [releases](../../releases/latest) or Google Play Store (coming soon).
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="75">](https://play.google.com/store/apps/details?id=app.dopita.smsn.updater)
+
+... or download the latest apk from [releases](../../releases/latest).
 
 ## How to update deep sleeping apps
 
